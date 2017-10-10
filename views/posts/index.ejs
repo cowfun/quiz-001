@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<div class = "col-sm-8">
+  <form class = "d-flex flex-column" enctype="multipart/form-data" action = '/posts' method = 'POST'>
+    <div class = "form-group">
+      <label> Username </label>
+      <textarea
+         class = 'form-control mt-2'
+         rows = '1'
+         name = 'username'
+         placeholder = "Clucky McCluck"></textarea>
+      <label> Content </label>
+      <textarea
+         class = 'form-control mt-2'
+         rows = '5'
+         name = 'content'
+         placeholder = "What are you cluckin' 'bout?"></textarea>
+       <input
+         class="form-control mt-2"
+         name="photo"
+         type="file"
+       />
+    </div>
+    <input class = "btn btn-outline-primary align-self-end"
+           type = 'submit'
+           value = 'Submit'/>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
