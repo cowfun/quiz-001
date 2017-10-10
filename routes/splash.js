@@ -8,6 +8,7 @@ router.get('/', function (request, response) {
   kx
     .select()
     .from("clucks")
+    .orderBy('created_at', 'DESC')
     .then((clucks)=>{
       response.render('index',{clucks})
     });
