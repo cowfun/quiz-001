@@ -15,15 +15,26 @@ router.post('/', upload.single('photo'), function (request, response) {
   const {body} = request;
   const {username} = request.body;
   const {content} = request.body;
-  const {filename} = request.file;
+  if(!request.file){
+    kx
+      .insert({username: username, content: content})
+      .into("clucks")
+      .then((clucks)=>{
+        console.log(clucks)
+        response.redirect('/')
+      });
+  }
+  else{
+    const {filename} = request.file;
+    kx
+      .insert({username: username, content: content, photo_path: `/uploads/${filename}`})
+      .into("clucks")
+      .then((clucks)=>{
+        console.log(clucks)
+        response.redirect('/')
+      });
+  }
 
-  kx
-    .insert({username: username, content: content, photo_path: `/uploads/${filename}`})
-    .into("clucks")
-    .then((clucks)=>{
-      console.log(clucks)
-      response.redirect('/')
-    });
 });
 
 module.exports = router;
